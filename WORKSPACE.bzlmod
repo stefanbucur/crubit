@@ -71,6 +71,9 @@ crates_repository(
         "googletest": crate.spec(
             version = ">0.0.0",
         ),
+        "heck": crate.spec(
+            version = ">=0.5.0",
+        ),
         "itertools": crate.spec(
             version = ">0.0.0",
         ),
@@ -79,6 +82,9 @@ crates_repository(
         ),
         "pin-project": crate.spec(
             version = ">0.0.0",
+        ),
+        "phf": crate.spec(
+            version = ">=0.12.0",
         ),
         "proc-macro2": crate.spec(
             version = ">0.0.0",

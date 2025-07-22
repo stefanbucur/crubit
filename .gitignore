@@ -1,3 +1,6 @@
 # avoid trailing `/` because these are symlinks
 /bazel-*
 /target
+
+/Cargo.lock
+/MODULE.bazel.lock

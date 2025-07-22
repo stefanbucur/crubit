@@ -17,7 +17,7 @@ build:generic_clang --copt=-Wno-missing-braces --host_copt=-Wno-missing-braces
 build:generic_clang --copt=-fno-rtti --host_copt=-fno-rtti
 
 # Somehow this is needed, according to the README.md!
-build:generic-clang --linkopt=-fuse-ld=/usr/bin/ld.lld-20
+build:generic_clang --linkopt=-fuse-ld=/usr/bin/ld.lld-20
 
 build --config=generic_clang
 build --@rules_rust//rust/toolchain/channel=nightly

@@ -5,12 +5,6 @@
 """Utility module for sharing logic between rules and aspects that generate Rust bindings from C++.
 """
 
-# buildifier: disable=bzl-visibility
-load("@rules_rust//rust/private:providers.bzl", "DepVariantInfo")
-load(
-    "//cc_bindings_from_rs/bazel_support:providers.bzl",
-    "CcBindingsFromRustInfo",
-)
 load("@@//rs_bindings_from_cc/bazel_support:compile_cc.bzl", "compile_cc")
 load("@@//rs_bindings_from_cc/bazel_support:compile_rust.bzl", "compile_rust")
 load(
@@ -24,6 +18,13 @@ load(
     "RustBindingsFromCcInfo",
 )
 load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain")
+
+# buildifier: disable=bzl-visibility
+load("@rules_rust//rust/private:providers.bzl", "DepVariantInfo")
+load(
+    "//cc_bindings_from_rs/bazel_support:providers.bzl",
+    "CcBindingsFromRustInfo",
+)
 
 def generate_and_compile_bindings(
         ctx,
@@ -199,7 +200,7 @@ bindings_attrs = {
         cfg = "exec",
     ),
     "_rustfmt_cfg": attr.label(
-        default = "//nowhere:rustfmt.toml",
+        default = "//third_party/crosstool/rust/unstable:rustfmt.toml",
         allow_single_file = True,
     ),
     # TODO(hlopko): Either 1) remove the unneeded `_error_format` and

@@ -4,6 +4,8 @@
 
 """`cc_bindings_from_rust` rule."""
 
+load("@bazel_skylib//rules:common_settings.bzl", "BuildSettingInfo")
+load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain", "use_cpp_toolchain")
 load(
     "@rules_rust//rust:rust_common.bzl",
     "BuildInfo",
@@ -31,7 +33,6 @@ load(
     "@rules_rust//rust/private:utils.bzl",
     "find_toolchain",
 )
-load("@bazel_skylib//rules:common_settings.bzl", "BuildSettingInfo")
 load(
     "//cc_bindings_from_rs/bazel_support:cc_bindings_from_rust_cli_flag_aspect_hint.bzl",
     "collect_cc_bindings_from_rust_cli_flags",
@@ -62,8 +63,6 @@ load(
     "//rs_bindings_from_cc/bazel_support:providers.bzl",
     "RustBindingsFromCcInfo",
 )
-
-load("@bazel_tools//tools/cpp:toolchain_utils.bzl", "find_cpp_toolchain", "use_cpp_toolchain")
 
 # Targets which do not receive C++ bindings at all.
 targets_to_remove = [
@@ -419,7 +418,7 @@ cc_bindings_from_rust_aspect = aspect(
             cfg = "exec",
         ),
         "_rustfmt_cfg": attr.label(
-            default = "//nowhere:rustfmt.toml",
+            default = "////third_party/crosstool/rust/unstable:rustfmt.toml",
             allow_single_file = True,
         ),
         "_extra_rustc_flags": attr.label(

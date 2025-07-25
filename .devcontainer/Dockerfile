@@ -6,6 +6,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     curl \
     git-all \
     python3 \
+    strace \
     zlib1g-dev \
     && update-ca-certificates \
     && rm -rf /var/lib/apt/lists/*

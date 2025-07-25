@@ -8,10 +8,6 @@ more context.
 """
 
 load(
-    "//features:crubit_feature_hint.bzl",
-    "find_crubit_features",
-)
-load(
     "@@//rs_bindings_from_cc/bazel_support:additional_rust_srcs_for_crubit_bindings_aspect_hint.bzl",
     "get_additional_rust_deps",
     "get_additional_rust_srcs",
@@ -31,7 +27,11 @@ load(
     "bindings_attrs",
     "generate_and_compile_bindings",
 )
-load("@protobuf//rust:aspects.bzl", "RustProtoInfo", "rust_cc_proto_library_aspect")
+load("@protobuf//rust/bazel:aspects.bzl", "RustProtoInfo", "rust_cc_proto_library_aspect")
+load(
+    "//features:crubit_feature_hint.bzl",
+    "find_crubit_features",
+)
 
 # <internal link>/127#naming-header-files-h-and-inc recommends declaring textual headers either in the
 # `textual_hdrs` attribute of the Bazel C++ rules, or using the `.inc` file extension. Therefore
